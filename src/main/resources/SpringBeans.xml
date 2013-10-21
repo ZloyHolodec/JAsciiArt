@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+ 
+	<bean id="GuiPresenter" class="ru.holodec.jascii.gui.GuiFormHelper">
+		<property name="presenter" ref="MainWindow" />
+	</bean>
+	
+	<bean id="ImgProcessor" class="ru.holodec.jascii.processors.ImgProcessorHelper">
+		<property name="processor" ref="MainProcessor"/>
+	</bean>
+	
+	<bean id="WriterHelper" class="ru.holodec.jascii.writer.ResultWriterHelper">
+		<property name="writer" ref="CurrentWriter"/>
+	</bean>
+	
+	<bean id="MainWindow" class="ru.holodec.jascii.gui.MainForm"/>
+	<bean id="MainProcessor" class="ru.holodec.jascii.processors.ImgProcessorImpl"/>
+	<bean id="CurrentWriter" class="ru.holodec.jascii.writer.ResultWriterImpl"/>
+	
+	<bean id="AcceptedSymbols" class="ru.holodec.jascii.processors.AcceptedSymbols">
+		<property name="symbols" value="qwertyuiopsdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890 "/>
+	</bean>
+</beans>

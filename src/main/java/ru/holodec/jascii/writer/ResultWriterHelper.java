@@ -1,17 +1,19 @@
 package ru.holodec.jascii.writer;
 
+import java.util.List;
+
 public class ResultWriterHelper {
 	public static final String WRITER_BEAN = "WriterHelper";
 	
-	private ResultWriter writer;
+	private  List<String>  writers;
 	
-	public ResultWriter getWriter() {
-		return writer;
+	public List<String> getWriters() {
+		return writers;
 	}
 
-	public void setWriter(ResultWriter writer) {
-		this.writer = writer;
+	public void setWriters(List<String> writers) {
+		this.writers = writers;
 	}
-
+	
 	public ResultWriterHelper() {}
 }

@@ -35,4 +35,8 @@ public class ResultWriterImpl implements ResultWriter {
 		}
 	}
 
+	public String getName() {
+		return "To output.png";
+	}
+
 }

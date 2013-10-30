@@ -8,19 +8,25 @@
 		<property name="presenter" ref="MainWindow" />
 	</bean>
 	
-	<bean id="ImgProcessor" class="ru.holodec.jascii.processors.ImgProcessorHelper">
-		<property name="processor" ref="MainProcessor"/>
+	<bean id="ProcessorHelper" class="ru.holodec.jascii.processors.ImgProcessorHelper">
+		<property name="processors">
+			<list value-type="java.lang.String">
+				<value>MainProcessor</value>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="WriterHelper" class="ru.holodec.jascii.writer.ResultWriterHelper">
-		<property name="writer" ref="CurrentWriter"/>
+		<property name="writers">
+			<list value-type="java.lang.String">
+				<value>ImageWriter</value>
+				<value>HtmlWriter</value>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="MainWindow" class="ru.holodec.jascii.gui.MainForm"/>
-	<bean id="MainProcessor" class="ru.holodec.jascii.processors.ImgProcessorImpl"/>
-	<bean id="CurrentWriter" class="ru.holodec.jascii.writer.ResultWriterImpl"/>
-	
 	<bean id="AcceptedSymbols" class="ru.holodec.jascii.processors.AcceptedSymbols">
-		<property name="symbols" value="qwertyuiopsdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890 "/>
+		<property name="symbols" value="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"/>
 	</bean>
 </beans>

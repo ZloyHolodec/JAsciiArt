@@ -3,17 +3,18 @@ package ru.holodec;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import ru.holodec.jascii.gui.StatusPresenter;
 
-/**
- * Hello world!
- *
- */
+
 public class App 
 {
-	public static final ApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"SpringBeans.xml"});
+	public static final ApplicationContext context = new ClassPathXmlApplicationContext(new String[] {"SpringBeans.xml", 
+																									  "SpringWriters.xml",
+																									  "SpringProcessors.xml"});
 	
     public static void main( String[] args )
     {
-//entry point in GuiPresenter bean
+    	StatusPresenter presenter = (StatusPresenter)context.getBean("MainWindow");
+    	presenter.startWork();
     }
-}
+} 

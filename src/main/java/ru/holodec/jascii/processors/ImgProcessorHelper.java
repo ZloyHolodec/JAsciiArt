@@ -1,25 +1,31 @@
 package ru.holodec.jascii.processors;
 
 import java.io.File;
+import java.util.List;
+
+import ru.holodec.App;
+import ru.holodec.jascii.writer.ResultWriter;
 
 public class ImgProcessorHelper {
-	public static final String PROCESSOR_BEAN = "ImgProcessor";
+	public static final String PROCESSOR_BEAN = "ProcessorHelper";
 	
-	private ImgProcessor processor;
+	private List<String> processors;
 	
 	public ImgProcessorHelper() {
 	}
 	
-	public void processImage(File fc) {
-		processor.processImage(fc);
+	public void processImage(File fc, String chosenProcessor, String chosenWriter) {
+		ImgProcessor p = (ImgProcessor)App.context.getBean(chosenProcessor);
+		ResultWriter w = (ResultWriter)App.context.getBean(chosenWriter);
+		p.processImage(fc, w);
 	}
 
-	public ImgProcessor getProcessor() {
-		return processor;
+	public List<String> getProcessors() {
+		return processors;
 	}
 
-	public void setProcessor(ImgProcessor processor) {
-		this.processor = processor;
+	public void setProcessors(List<String> processors) {
+		this.processors = processors;
 	}
 	
 }

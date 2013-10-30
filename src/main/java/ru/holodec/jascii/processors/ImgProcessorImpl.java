@@ -2,7 +2,6 @@ package ru.holodec.jascii.processors;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -14,21 +13,19 @@ import javax.imageio.ImageIO;
 import ru.holodec.App;
 import ru.holodec.jascii.gui.GuiFormHelper;
 import ru.holodec.jascii.writer.ResultWriter;
-import ru.holodec.jascii.writer.ResultWriterHelper;
 
 public class ImgProcessorImpl implements ImgProcessor {
-	private static final int RECT_SIZE = 20;
+	private static final int RECT_SIZE = 6;
 	
 	private BufferedImage img;
 	private GuiFormHelper guiHelper;
-	private ResultWriterHelper writer;
 	private AcceptedSymbols symbols;
 	private ArrayList<String> strings;
+	
 	ArrayList<ArrayList<Color>> colors;
 	
 	private void getBeans() {
 		guiHelper = (GuiFormHelper)App.context.getBean(GuiFormHelper.PRESENTER_BEAN);
-		writer = (ResultWriterHelper)App.context.getBean(ResultWriterHelper.WRITER_BEAN);
 		symbols = (AcceptedSymbols)App.context.getBean(AcceptedSymbols.BEAN_NAME);
 	}
 	
@@ -54,14 +51,16 @@ public class ImgProcessorImpl implements ImgProcessor {
 		int r = 0;
 		int g = 0;
 		int b = 0;
+		int count = 0;
 		for (; x<x_end; x++) {
 			for (; y<y_end; y++) {
 				Color c = new Color(img.getRGB(x, y));
 				r += c.getRed(); g += c.getGreen(); b += c.getBlue();
+				count++;
 			}
 		}
+		count = count == 0 ? 1 : count;
 		
-		int count = RECT_SIZE * RECT_SIZE / 10;
 		return new Color(r / count, g / count, b / count);
 	}
 	
@@ -130,16 +129,19 @@ public class ImgProcessorImpl implements ImgProcessor {
 	public ImgProcessorImpl() {}
 
 	
-	public void processImage(File file) {
+	public void processImage(File file, ResultWriter writer) {
 		getBeans();
 		try {
 			openImage(file);
 		} catch(IOException ex) {
-			writer.getWriter().Write(new String[] {ex.getMessage()}, null);
+			writer.Write(new String[] {ex.getMessage()}, null);
 			return;
 		}
 		calcImage();
-		writer.getWriter().Write(strings.toArray( new String[0] ), colors);
+		writer.Write(strings.toArray( new String[0] ), colors);
 	}
-
+	
+	public String getName() {
+		return "Standart algorithm";
+	}
 }

@@ -1,7 +1,6 @@
 package ru.holodec.jascii.writer;
 
 import java.awt.Color;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -10,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import ru.holodec.App;
+import ru.holodec.jascii.writer.ResultWriter;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
@@ -119,8 +119,10 @@ public class HtmlWriter implements ResultWriter {
 		initModel();
 		try {
 			Template temp = cfg.getTemplate("template.html");
-			FileOutputStream stream = new FileOutputStream(new File("output.html"));
-			temp.process(root, new OutputStreamWriter(stream));
+			//FileOutputStream stream = new FileOutputStream(new File("output.html"));
+			SaveDialog dialog = new SaveDialog(".html");
+			FileOutputStream stream = dialog.getFileStream();
+			temp.process(root, new OutputStreamWriter(stream)); 
 		} catch (IOException | TemplateException ex) {
 			System.out.println(ex);
 		}

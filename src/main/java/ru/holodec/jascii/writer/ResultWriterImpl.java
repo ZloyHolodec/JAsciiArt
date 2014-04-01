@@ -28,7 +28,8 @@ public class ResultWriterImpl implements ResultWriter {
 			}
 		}
 		try {
-			ImageIO.write(img, "png", new File("output.png"));
+			SaveDialog dialog = new SaveDialog(".png");
+			ImageIO.write(img, "png", dialog.getFile());
 		} catch (IOException ex) {
 			System.out.println(ex.getMessage());
 		}

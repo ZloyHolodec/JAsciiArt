@@ -63,20 +63,13 @@ public class MainForm extends JFrame implements StatusPresenter {
 		this.add(progressBar);
 	}
 	
-	public void setVisible(boolean state) {
-		setBeans();
+	public MainForm() {
 		this.setSize(400, 200);
 		this.getContentPane().setLayout(new GridLayout(2, 1));
 		this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		addButton();
 		addProgressBar();
-		addBoxes();
-		super.setVisible(state);
-	}
-	
-	public MainForm() {
-
 	}
 
 	public void setProcessStatus(int procents) {
@@ -85,6 +78,8 @@ public class MainForm extends JFrame implements StatusPresenter {
 	}
 
 	public void startWork() {
+		setBeans();
+		addBoxes();
 		setVisible(true);
 	}
 

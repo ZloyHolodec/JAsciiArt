@@ -24,7 +24,6 @@ public class ResultWriterImpl implements ResultWriter {
 		for (int y = 0; y<resutls.length; y++) {
 			for (int x = 0; x<resutls[y].length(); x++) {
 				g.setColor(colors.get(y).get(x));
-				System.out.println(colors.get(y).get(x).toString());
 				g.drawString(Character.toString(resutls[y].charAt(x)), x*16, y*16);
 			}
 		}

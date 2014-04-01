@@ -27,6 +27,6 @@
 	
 	<bean id="MainWindow" class="ru.holodec.jascii.gui.MainForm"/>
 	<bean id="AcceptedSymbols" class="ru.holodec.jascii.processors.AcceptedSymbols">
-		<property name="symbols" value="qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890-=|\/"/>
+		<property name="symbols" value="QWERTYUIOPASDFGHJKLZXCVBNM#@qwertyuiopasdfghjklzxcvbnm\\/|"/>
 	</bean>
 </beans>

@@ -116,7 +116,7 @@ public class ImgProcessorImpl implements ImgProcessor {
 			}
 			strings.add(sb.toString());
 			row += 1;
-			guiHelper.getPresenter().setProcessStatus((100/row_count)*row);
+			guiHelper.getPresenter().setProcessStatus(Math.round((100.0f/row_count)*row));
 		}
 		guiHelper.getPresenter().setProcessStatus(100);
 	}

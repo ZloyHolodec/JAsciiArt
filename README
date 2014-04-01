@@ -1,1 +1,4 @@
-Simple Ascii generator. Can write ascii on picture or in HTML code.
+Простой генератор цветного ASCII арта.
+Поддерживается вывод ASCII текста в картинку или HTML страничку.
+Для сборки проекта необходимо иметь установленный Maven. В папке проекта выполнить команду:
+mvn clean compile assembly:single
